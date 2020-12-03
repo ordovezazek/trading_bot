@@ -1,6 +1,6 @@
 import os
 
-import discord, random
+import discord
 from dotenv import load_dotenv
 from fastquant import get_pse_data
 from fastquant import get_stock_data
@@ -41,20 +41,10 @@ async def on_message(message):
         return
 
     msg = [
-        'sexy time?',
-        'cuddle?',
-        'smoke up?',
-        'pig out?',
-        'shower sex?',
-        'drink?',
-        'fag?',
-        'each other..',
+        'stock'
     ]
 
-    if message.content.lower().startswith('what to do'):
-        response = random.choice(msg)
-        await message.channel.send(response)
-    elif message.content.lower().startswith('?phstock'):
+    if message.content.lower().startswith('?phstock'):
         stock = message.content.replace('?phstock ', '')
         response = str(get_pse_data(stock, "2020-11-26", "2020-11-26"))
         await message.channel.send(response)
